@@ -1,0 +1,41 @@
+name: Lint & Build
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Run clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+
+          clang-format --dry-run --Werror $(find src include -name "*.cpp" -o -name "*.h")
+
+      - name: Run cppcheck
+        run: |
+          sudo apt-get install -y cppcheck
+          cppcheck \
+            --enable=all \
+            --error-exitcode=1 \
+            --suppress=missingIncludeSystem \
+            --suppress=unusedFunction \
+            src include
+
+      - name: Build with PlatformIO
+        run: pio run

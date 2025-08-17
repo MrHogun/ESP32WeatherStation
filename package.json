@@ -1,0 +1,19 @@
+{
+  "name": "esp32weathersation",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrHogun/ESP32WeatherStation.git"
+  },
+  "author": "MrHogun",
+  "license": "ISC",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.4",
+    "@semantic-release/npm": "^12.0.2",
+    "semantic-release": "^24.2.7"
+  }
+}
