@@ -3,6 +3,7 @@
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
 
+#include "utils/time/time_format.h"
 #include "weather/parser/weather_parser.h"
 
 const char* apiKey = "bf6e046b0b5c260cb1815fe350e7c6d5";
@@ -60,10 +61,10 @@ bool fetchWeather() {
       Serial.println(data.location);
       Serial.print("Країна: ");
       Serial.println(data.country);
-      Serial.print("Схід сонця (Unix): ");
-      Serial.println(data.sunrise);
-      Serial.print("Захід сонця (Unix): ");
-      Serial.println(data.sunset);
+      Serial.print("Схід сонця: ");
+      Serial.println(formatTimeHM(data.sunrise, data.timezone));
+      Serial.print("Захід сонця: ");
+      Serial.println(formatTimeHM(data.sunset, data.timezone));
     } else {
       Serial.println("Помилка парсингу JSON!");
     }
