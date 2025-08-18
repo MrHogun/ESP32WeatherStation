@@ -9,24 +9,24 @@ bool parseWeatherJson(const String& json, WeatherData& data) {
     return false;
   }
 
-  data.temperature = doc["main"]["temp"] | 0.0;
-  data.feelsLike = doc["main"]["feels_like"] | 0.0;
-  data.tempMin = doc["main"]["temp_min"] | 0.0;
-  data.tempMax = doc["main"]["temp_max"] | 0.0;
-  data.humidity = doc["main"]["humidity"] | 0.0;
-  data.pressure = doc["main"]["pressure"] | 0.0;
-  data.windSpeed = doc["wind"]["speed"] | 0.0;
-  data.windGust = doc["wind"]["gust"] | 0.0;
-  data.windDeg = doc["wind"]["deg"] | 0;
-  data.clouds = doc["clouds"]["all"] | 0;
-  data.weatherMain = String(doc["weather"][0]["main"] | "");
-  data.weatherDescription = String(doc["weather"][0]["description"] | "");
-  data.weatherIcon = String(doc["weather"][0]["icon"] | "");
-  data.location = String(doc["name"] | "");
-  data.country = String(doc["sys"]["country"] | "");
-  data.sunrise = doc["sys"]["sunrise"] | 0;
-  data.sunset = doc["sys"]["sunset"] | 0;
-  data.timezone = doc["timezone"] | 0;
+  data.temperature = doc["main"]["temp"].as<float>();
+  data.feelsLike = doc["main"]["feels_like"].as<float>();
+  data.tempMin = doc["main"]["temp_min"].as<float>();
+  data.tempMax = doc["main"]["temp_max"].as<float>();
+  data.humidity = doc["main"]["humidity"].as<float>();
+  data.pressure = doc["main"]["pressure"].as<float>();
+  data.windSpeed = doc["wind"]["speed"].as<float>();
+  data.windGust = doc["wind"]["gust"].as<float>();
+  data.windDeg = doc["wind"]["deg"].as<int>();
+  data.clouds = doc["clouds"]["all"].as<int>();
+  data.weatherMain = String(doc["weather"][0]["main"].as<const char*>());
+  data.weatherDescription = String(doc["weather"][0]["description"].as<const char*>());
+  data.weatherIcon = String(doc["weather"][0]["icon"].as<const char*>());
+  data.location = String(doc["name"].as<const char*>());
+  data.country = String(doc["sys"]["country"].as<const char*>());
+  data.sunrise = doc["sys"]["sunrise"].as<unsigned long>();
+  data.sunset = doc["sys"]["sunset"].as<unsigned long>();
+  data.timezone = doc["timezone"].as<int>();
 
   return true;
 }
