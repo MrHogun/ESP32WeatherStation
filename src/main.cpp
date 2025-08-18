@@ -13,21 +13,10 @@ void setup() {
 
 void loop() {
   bme680Update();
-  Serial.println("---------------------------");
-  Serial.print("Температура: ");
-  Serial.print(bme680Temperature);
-  Serial.println(" °C");
-  Serial.print("Вологість: ");
-  Serial.print(bme680Humidity);
-  Serial.println(" %");
-  Serial.print("Тиск: ");
-  Serial.print(bme680Pressure);
-  Serial.println(" hPa");
-  Serial.print("IAQ: ");
-  Serial.println(bme680Iaq);
-
-  Serial.println("---------------------------");
+  printBme680Data();
+  Serial.println("----------------------------------");
   fetchWeather();
+  Serial.println("----------------------------------");
 
   delay(60000);
 }
