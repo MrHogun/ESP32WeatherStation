@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/MrHogun/ESP32WeatherStation/compare/v0.2.0...v0.2.1) (2025-08-18)
+
+
+### Bug Fixes
+
+* **sensor:** move BME680 data output from main.cpp to bme680_sensor.cpp ([d397430](https://github.com/MrHogun/ESP32WeatherStation/commit/d397430651d370cd04b80d1a3823921127f2b9c2))
+
 # [0.2.0](https://github.com/MrHogun/ESP32WeatherStation/compare/v0.1.0...v0.2.0) (2025-08-18)
 
 
