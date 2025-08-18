@@ -18,6 +18,7 @@ struct WeatherData {
   String country;             // sys.country
   unsigned long sunrise;      // sys.sunrise
   unsigned long sunset;       // sys.sunset
+  int timezone;               // timezone (seconds offset from UTC)
 };
 
 bool parseWeatherJson(const String& json, WeatherData& data);

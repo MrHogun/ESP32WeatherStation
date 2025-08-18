@@ -26,6 +26,7 @@ bool parseWeatherJson(const String& json, WeatherData& data) {
   data.country = String(doc["sys"]["country"] | "");
   data.sunrise = doc["sys"]["sunrise"] | 0;
   data.sunset = doc["sys"]["sunset"] | 0;
+  data.timezone = doc["timezone"] | 0;
 
   return true;
 }
