@@ -24,5 +24,5 @@ void loop() {
   Serial.println("----------------------------------");
   printBme680Data();
 
-  delay(60000);
+  delay(10000);
 }
