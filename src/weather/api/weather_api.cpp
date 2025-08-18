@@ -3,8 +3,8 @@
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
 
-#include "utils/time/time_format.h"
-#include "weather/parser/weather_parser.h"
+#include "../../utils/time/time_format.h"
+#include "../parser/weather_parser.h"
 
 const char* apiKey = "bf6e046b0b5c260cb1815fe350e7c6d5";
 const char* cityId = "707471";
