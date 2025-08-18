@@ -3,6 +3,8 @@
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
 
+#include "weather/parser/weather_parser.h"
+
 const char* apiKey = "bf6e046b0b5c260cb1815fe350e7c6d5";
 const char* cityId = "707471";
 
@@ -18,7 +20,47 @@ bool fetchWeather() {
 
   if (httpCode > 0) {
     String payload = http.getString();
-    Serial.println(payload);
+
+    WeatherData data;
+    if (parseWeatherJson(payload, data)) {
+      Serial.println("Погода успішно отримана і розпарсена:");
+      Serial.print("Температура: ");
+      Serial.println(data.temperature);
+      Serial.print("Відчувається як: ");
+      Serial.println(data.feelsLike);
+      Serial.print("Мінімальна температура: ");
+      Serial.println(data.tempMin);
+      Serial.print("Максимальна температура: ");
+      Serial.println(data.tempMax);
+      Serial.print("Вологість: ");
+      Serial.println(data.humidity);
+      Serial.print("Тиск: ");
+      Serial.println(data.pressure);
+      Serial.print("Вітер (швидкість): ");
+      Serial.println(data.windSpeed);
+      Serial.print("Вітер (порив): ");
+      Serial.println(data.windGust);
+      Serial.print("Вітер (напрям): ");
+      Serial.println(data.windDeg);
+      Serial.print("Хмарність: ");
+      Serial.println(data.clouds);
+      Serial.print("Основна погода: ");
+      Serial.println(data.weatherMain);
+      Serial.print("Опис: ");
+      Serial.println(data.weatherDescription);
+      Serial.print("Іконка: ");
+      Serial.println(data.weatherIcon);
+      Serial.print("Місто: ");
+      Serial.println(data.location);
+      Serial.print("Країна: ");
+      Serial.println(data.country);
+      Serial.print("Схід сонця (Unix): ");
+      Serial.println(data.sunrise);
+      Serial.print("Захід сонця (Unix): ");
+      Serial.println(data.sunset);
+    } else {
+      Serial.println("Помилка парсингу JSON!");
+    }
     http.end();
     return true;
   } else {
