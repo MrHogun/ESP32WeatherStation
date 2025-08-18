@@ -26,5 +26,8 @@ void loop() {
   Serial.print("IAQ: ");
   Serial.println(bme680Iaq);
 
-  delay(3000);
+  Serial.println("---------------------------");
+  fetchWeather();
+
+  delay(60000);
 }
