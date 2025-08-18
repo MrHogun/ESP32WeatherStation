@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/MrHogun/ESP32WeatherStation/compare/v0.2.1...v0.3.0) (2025-08-18)
+
+
+### Features
+
+* mqtt integration ([#3](https://github.com/MrHogun/ESP32WeatherStation/issues/3)) ([cc32a67](https://github.com/MrHogun/ESP32WeatherStation/commit/cc32a6712621b1259bb613f1db1bba958410887f))
+
 ## [0.2.1](https://github.com/MrHogun/ESP32WeatherStation/compare/v0.2.0...v0.2.1) (2025-08-18)
 
 
