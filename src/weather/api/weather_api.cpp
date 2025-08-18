@@ -8,10 +8,17 @@
 const char* apiKey = "bf6e046b0b5c260cb1815fe350e7c6d5";
 const char* cityId = "707471";
 
+String buildWeatherApiUrl(const char* cityId, const char* apiKey) {
+  String url = "http://api.openweathermap.org/data/2.5/weather?";
+  url += "id=" + String(cityId);
+  url += "&appid=" + String(apiKey);
+  url += "&units=metric";
+  url += "&lang=ua";
+  return url;
+}
+
 bool fetchWeather() {
-  String apiUrl =
-      "http://api.openweathermap.org/data/2.5/weather?id=" + String(cityId) +
-      "&appid=" + String(apiKey) + "&units=metric";
+  String apiUrl = buildWeatherApiUrl(cityId, apiKey);
 
   HTTPClient http;
   http.begin(apiUrl);
@@ -23,7 +30,6 @@ bool fetchWeather() {
 
     WeatherData data;
     if (parseWeatherJson(payload, data)) {
-      Serial.println("Погода успішно отримана і розпарсена:");
       Serial.print("Температура: ");
       Serial.println(data.temperature);
       Serial.print("Відчувається як: ");
